@@ -44,8 +44,8 @@ void GaussianBlur_filter(){
 }
 ```
 #### NOTE: 
-<Accessing the image_s's data to the function doing convoluction and write out the result to the iamge_t.  />
-rgb_raw_data_offset = 54; (avoid the picture shift)
+(1)Accessing the image_s's data to the function doing convoluction and write out the result to the iamge_t.  
+(2)rgb_raw_data_offset = 54; (avoid the picture shift)
 
 ### Part 2: 3X3 Gaussian Blur Filter(systemC)
 I modified the Lab02 sobel_fifo source code to the new 3X3 Gaussian Blur Filter(systemC type).
