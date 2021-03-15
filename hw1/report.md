@@ -48,6 +48,7 @@ void GaussianBlur_filter(){
 (2)rgb_raw_data_offset = 54; (avoid the picture shift)
 
 ### Part 2: 3X3 Gaussian Blur Filter(systemC)
+```
 I modified the Lab02 sobel_fifo source code to the new 3X3 Gaussian Blur Filter(systemC type).
 There are three parts of this source code
 (1) GaussianBlurFilter.cpp(do convoluction), GaussianBlurFilter.h
@@ -57,6 +58,7 @@ and using cmake to working this homework.
 cmake: cmake --> Cmakelist.txt --> Makefile
 make: Makefile
 make run: run
+```
 #### structure
 I modified the structure from the sobel filter(fifo).
 ![](https://github.com/patrick047/EE6470/blob/main/hw1/sobel_sw/001.jpg)
