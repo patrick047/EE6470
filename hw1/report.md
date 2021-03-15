@@ -78,8 +78,8 @@ sc_main, rst, i_r.read, i_g.read, i_b.read. (read from Testbench)
 ![](https://raw.githubusercontent.com/patrick047/EE6470/main/hw1/GaussianBlurSC/build/lena_filted.bmp)
 
 ## Discussions
-For this homework, I modified source code of the lab02 sobel_fifo and the sobel_sw from TA provided.
-In the systemC type, I debug my code more than hundreds times because I did the convoluction twice that I did not notice its mistake.
-After that, I fixed it. 
-I didn't use the systemC data type in this homework because I am not really familiar with it.
-Thus, I have to work hard on it after submit this homework report. 
+>For this homework, I modified source code of the lab02 sobel_fifo and the sobel_sw from TA provided.
+>In the systemC type, I debug my code more than hundreds times because I did the convoluction twice that I did not notice its mistake.
+>After that, I fixed it. 
+>I didn't use the systemC data type in this homework because I am not really familiar with it.
+>Thus, I have to work hard on it after submit this homework report. 
