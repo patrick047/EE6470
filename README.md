@@ -9,7 +9,7 @@ make
 ```
 run
 ```
-## Result
+#### Result
 lena_filtered.bmp
 
 ### Part 2: systemC
@@ -20,5 +20,5 @@ make
 ```
 make run
 ```
-## Result
+#### Result
 lena_filted.bmp
