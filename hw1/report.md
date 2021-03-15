@@ -44,7 +44,7 @@ void GaussianBlur_filter(){
 }
 ```
 #### NOTE: 
-Acessing the image_s's data to the function doing convoluction and write out the result to the iamge_t. 
+<Accessing the image_s's data to the function doing convoluction and write out the result to the iamge_t.  />
 rgb_raw_data_offset = 54; (avoid the picture shift)
 
 ### Part 2: 3X3 Gaussian Blur Filter(systemC)
