@@ -28,7 +28,7 @@ sc_main, rst, i_r.read, i_g.read, i_b.read. (read from Testbench)
 ### Part 2: 3X3 Gaussian Blur Filter(systemC) with FIFO and matrix
 In GaussianBlurFilter.cpp, I used array to read the data from r,g,b, then read the image three row at first. 
 After that, shift to read.
-![](https://raw.githubusercontent.com/patrick047/EE6470/main/hw2/GaussianBlurP2/hw2_3.PNG)
+![](https://raw.githubusercontent.com/patrick047/EE6470/main/hw2/GaussianBlurP2/hw2_3.jpg)
 Then, using 3X3 Gaussian Blur to deal with the data that stored in the array and write the result into o_result_r, o_result_g, o_result_b. 
 I added i_weight, i_height, o_weight, o_height to send the size of images.(Different from part1)
 ```
