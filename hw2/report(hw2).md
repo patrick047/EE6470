@@ -28,7 +28,7 @@ sc_main, rst, i_r.read, i_g.read, i_b.read. (read from Testbench)
 ### Part 2: 3X3 Gaussian Blur Filter(systemC) with FIFO and matrix
 In GaussianBlurFilter.cpp, I used array to read the data from r,g,b, then read the image three row at first. 
 After that, shift to read.
-![](https://raw.githubusercontent.com/patrick047/EE6470/main/hw2/GaussianBlurP2/hw2_3.bmp)
+![](https://raw.githubusercontent.com/patrick047/EE6470/main/hw2/GaussianBlurP2/hw2_3.PNG)
 Then, using 3X3 Gaussian Blur to deal with the data that stored in the array and write the result into o_result_r, o_result_g, o_result_b. 
 I added i_weight, i_height, o_weight, o_height to send the size of images.(Different from part1)
 ```
@@ -48,11 +48,11 @@ GaussianBlur_filter.i_width(width); //new
 ### Part 1
 ![](https://raw.githubusercontent.com/patrick047/EE6470/main/hw2/GaussianBlurSC/build/lena_filted.bmp)
 The simulation time is 2621446.
-![](https://raw.githubusercontent.com/patrick047/EE6470/main/hw2/GaussianBlurSC/hw2_1.png)
+![](https://raw.githubusercontent.com/patrick047/EE6470/main/hw2/GaussianBlurSC/hw2_1.PNG)
 ### Part 2
 ![](https://raw.githubusercontent.com/patrick047/EE6470/main/hw2/GaussianBlurP2/build/lena_filted.bmp)
 The simulation time is 2606894.
-![](https://raw.githubusercontent.com/patrick047/EE6470/main/hw2/GaussianBlurP2/hw2_2.png)
+![](https://raw.githubusercontent.com/patrick047/EE6470/main/hw2/GaussianBlurP2/hw2_2.PNG)
 
 ## Discussions
 For this homework, I modified source code of the lab02 sobel_fifo from TA provided.
