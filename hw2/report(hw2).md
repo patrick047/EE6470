@@ -48,11 +48,11 @@ GaussianBlur_filter.i_width(width); //new
 ### Part 1
 ![](https://raw.githubusercontent.com/patrick047/EE6470/main/hw2/GaussianBlurSC/build/lena_filted.bmp)
 The simulation time is 2621446.
-![](https://raw.githubusercontent.com/patrick047/EE6470/main/hw2/GaussianBlurSC/hw2_1.bmp)
+![](https://raw.githubusercontent.com/patrick047/EE6470/main/hw2/GaussianBlurSC/hw2_1.png)
 ### Part 2
 ![](https://raw.githubusercontent.com/patrick047/EE6470/main/hw2/GaussianBlurP2/build/lena_filted.bmp)
 The simulation time is 2606894.
-![](https://raw.githubusercontent.com/patrick047/EE6470/main/hw2/GaussianBlurP2/hw2_2.bmp)
+![](https://raw.githubusercontent.com/patrick047/EE6470/main/hw2/GaussianBlurP2/hw2_2.png)
 
 ## Discussions
 For this homework, I modified source code of the lab02 sobel_fifo from TA provided.
