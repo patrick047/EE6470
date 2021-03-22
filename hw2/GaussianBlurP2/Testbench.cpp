@@ -173,5 +173,4 @@ void Testbench::do_GaussianBlur_out()
       wait();
     }
   }
-  //sc_stop();
 }
