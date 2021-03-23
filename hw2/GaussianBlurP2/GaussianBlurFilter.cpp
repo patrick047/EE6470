@@ -43,7 +43,7 @@ void GaussianBlurFilter::do_GaussianBlurFilter()
     int array_b[3][width];
     int m, n;
     int flag = 0;
-    for (m = 0; m < 3; ++m)
+    for (m = 0; m < 3; ++m) //setup array
     {
         for (n = 0; n < width; ++n)
         {
@@ -68,19 +68,19 @@ void GaussianBlurFilter::do_GaussianBlurFilter()
             }
             flag = 1;
         }
-        else
+        if (flag != 0)
         {
             for (m = 0; m < MASK_N; ++m) //shift
             {
-                array_r[0][n] = array_r[1][n];
-                array_g[0][n] = array_g[1][n];
-                array_b[0][n] = array_b[1][n];
-                array_r[1][n] = array_r[2][n];
-                array_g[1][n] = array_g[2][n];
-                array_b[1][n] = array_b[2][n];
-                array_r[2][n] = array_g[2][n] = array_b[2][n] = 0;
+                for (int n = 0; n < width; ++n)
+                {
+
+                    array_r[m][n] = array_r[m + 1][n];
+                    array_g[m][n] = array_g[m + 1][n];
+                    array_b[m][n] = array_b[m + 1][n];
+                }
             }
-            for (n = 0; n < width; ++n)
+            for (int n = 0; n < width; ++n)
             {
                 array_r[2][n] = i_r.read();
                 array_g[2][n] = i_g.read();
@@ -98,6 +98,7 @@ void GaussianBlurFilter::do_GaussianBlurFilter()
             {
                 for (unsigned int u = 0; u < MASK_X; ++u)
                 {
+
                     red += array_r[u][v + d] * filter[u][v];
                     green += array_g[u][v + d] * filter[u][v];
                     blue += array_b[u][v + d] * filter[u][v];
