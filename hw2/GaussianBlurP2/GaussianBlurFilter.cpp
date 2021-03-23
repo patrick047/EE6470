@@ -68,16 +68,19 @@ void GaussianBlurFilter::do_GaussianBlurFilter()
         }
         if (flag != 0)
         {
-            for (m = 0; m < MASK_N; ++m) //shift
-            {
-                for (int n = 0; n < width; ++n)
-                {
 
-                    r[m][n] = r[m + 1][n];
-                    g[m][n] = g[m + 1][n];
-                    b[m][n] = b[m + 1][n];
-                }
+            for (int n = 0; n < width; ++n)
+            {
+
+                r[0][n] = r[1][n];
+                g[0][n] = g[1][n];
+                b[0][n] = b[1][n];
+                r[1][n] = r[2][n];
+                g[1][n] = g[2][n];
+                b[1][n] = b[2][n];
+                r[2][n] = g[2][n] = b[2][n] = 0;
             }
+
             for (int n = 0; n < width; ++n)
             {
                 r[2][n] = i_r.read();
