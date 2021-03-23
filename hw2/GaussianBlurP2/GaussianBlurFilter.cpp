@@ -38,18 +38,18 @@ void GaussianBlurFilter::do_GaussianBlurFilter()
     }
     width = i_width.read();
     height = i_height.read();
-    int array_r[3][width];
-    int array_g[3][width];
-    int array_b[3][width];
+    int r[3][width];
+    int g[3][width];
+    int b[3][width];
     int m, n;
     int flag = 0;
     for (m = 0; m < 3; ++m) //setup array
     {
         for (n = 0; n < width; ++n)
         {
-            array_r[m][n] = 0;
-            array_g[m][n] = 0;
-            array_b[m][n] = 0;
+            r[m][n] = 0;
+            g[m][n] = 0;
+            b[m][n] = 0;
         }
     }
 
@@ -61,9 +61,9 @@ void GaussianBlurFilter::do_GaussianBlurFilter()
             {
                 for (n = 0; n < width; ++n)
                 {
-                    array_r[m][n] = i_r.read();
-                    array_g[m][n] = i_g.read();
-                    array_b[m][n] = i_b.read();
+                    r[m][n] = i_r.read();
+                    g[m][n] = i_g.read();
+                    b[m][n] = i_b.read();
                 }
             }
             flag = 1;
@@ -75,16 +75,16 @@ void GaussianBlurFilter::do_GaussianBlurFilter()
                 for (int n = 0; n < width; ++n)
                 {
 
-                    array_r[m][n] = array_r[m + 1][n];
-                    array_g[m][n] = array_g[m + 1][n];
-                    array_b[m][n] = array_b[m + 1][n];
+                    r[m][n] = r[m + 1][n];
+                    g[m][n] = g[m + 1][n];
+                    b[m][n] = b[m + 1][n];
                 }
             }
             for (int n = 0; n < width; ++n)
             {
-                array_r[2][n] = i_r.read();
-                array_g[2][n] = i_g.read();
-                array_b[2][n] = i_b.read();
+                r[2][n] = i_r.read();
+                g[2][n] = i_g.read();
+                b[2][n] = i_b.read();
             }
         }
 
@@ -99,9 +99,9 @@ void GaussianBlurFilter::do_GaussianBlurFilter()
                 for (unsigned int u = 0; u < MASK_X; ++u)
                 {
 
-                    red += array_r[u][v + d] * filter[u][v];
-                    green += array_g[u][v + d] * filter[u][v];
-                    blue += array_b[u][v + d] * filter[u][v];
+                    red += r[u][v + d] * filter[u][v];
+                    green += g[u][v + d] * filter[u][v];
+                    blue += b[u][v + d] * filter[u][v];
 
                     wait();
                 }
