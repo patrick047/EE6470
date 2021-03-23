@@ -38,12 +38,10 @@ void GaussianBlurFilter::do_GaussianBlurFilter()
     }
     width = i_width.read();
     height = i_height.read();
-    int r[3][width];
-    int g[3][width];
-    int b[3][width];
+    int r[3][width], g[3][width], b[3][width];
     int m, n;
     int flag = 0;
-    for (m = 0; m < 3; ++m) //setup array
+    for (m = 0; m < 3; ++m) //setup array(m列n行)
     {
         for (n = 0; n < width; ++n)
         {
