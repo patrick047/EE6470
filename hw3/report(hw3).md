@@ -21,7 +21,7 @@ I modified the structure from the sobel filter(lab03).
 ### Original
 ![](https://raw.githubusercontent.com/patrick047/EE6470/main/hw1/Gaussian_Blur/lena.bmp)
 ### After hw3
-![](https://raw.githubusercontent.com/patrick047/EE6470/main/hw3/GaussianBlurSC/build/lena_filted.bmp)
+![](https://raw.githubusercontent.com/patrick047/EE6470/main/hw3/build/lena_filted.bmp)
 The simulation time is 2601473.
 ![](https://raw.githubusercontent.com/patrick047/EE6470/main/hw3/hw3_1.PNG)
 
