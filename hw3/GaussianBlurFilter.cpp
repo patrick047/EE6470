@@ -35,7 +35,7 @@ void GaussianBlurFilter::do_GaussianBlurFilter()
 
   int r[3][width], g[3][width], b[3][width];
   int m, n;
-  int flag = 0;
+  int flag = 0;//counter
   for (m = 0; m < MASK_X; ++m) //setup array(m列n行)
   {
     for (n = 0; n < width; ++n)
@@ -48,7 +48,7 @@ void GaussianBlurFilter::do_GaussianBlurFilter()
 
   while (true)
   {
-    if (flag == 0)
+    if (flag == 0)//start from 0
     {
       for (m = 0; m < MASK_X; ++m)
       {
@@ -109,7 +109,7 @@ void GaussianBlurFilter::do_GaussianBlurFilter()
     }
   }
 }
-
+//blocking_transport
 void GaussianBlurFilter::blocking_transport(tlm::tlm_generic_payload &payload, sc_core::sc_time &delay)
 {
   sc_dt::uint64 addr = payload.get_address();
@@ -146,7 +146,7 @@ void GaussianBlurFilter::blocking_transport(tlm::tlm_generic_payload &payload, s
     switch (addr)
     {
     case GaussianBlur_FILTER_R_ADDR:
-      if (flag == 0)
+      if (flag == 0)//counter start from 0
       {
          buffer.uc[0]=data_ptr[0] ;
          buffer.uc[1]=data_ptr[1] ;
