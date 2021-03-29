@@ -15,7 +15,7 @@ make: Makefile
 make run: run
 #### structure
 I modified the structure from the sobel filter(lab03).
-![](https://raw.githubusercontent.com/patrick047/EE6470/main/hw3/GaussianBlurSC/hw3_2.JPG)
+![](https://raw.githubusercontent.com/patrick047/EE6470/main/hw3/hw3_2.jpg)
 
 ## Results 
 ### Original
@@ -23,7 +23,7 @@ I modified the structure from the sobel filter(lab03).
 ### After hw3
 ![](https://raw.githubusercontent.com/patrick047/EE6470/main/hw3/GaussianBlurSC/build/lena_filted.bmp)
 The simulation time is 2601473.
-![](https://raw.githubusercontent.com/patrick047/EE6470/main/hw3/GaussianBlurSC/hw3_1.PNG)
+![](https://raw.githubusercontent.com/patrick047/EE6470/main/hw3/hw3_1.PNG)
 
 ## Source Code Introduction
 #### GaussianBlurFilter mask
