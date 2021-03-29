@@ -29,7 +29,7 @@ Testbench::Testbench(sc_module_name n)
     : sc_module(n), initiator("initiator"), output_rgb_raw_data_offset(54)
 {
   SC_THREAD(do_GaussianBlur);
-  //SC_THREAD(do_GaussianBlur_out);
+  SC_THREAD(do_GaussianBlur_out);
 }
 
 int Testbench::read_bmp(string infile_name)
@@ -133,16 +133,13 @@ void Testbench::do_GaussianBlur()
   int pixels = 0;
   word data;
   unsigned char mask[4];
-  data.uint = width; //transfer width information for first time (unsigned int)
+  data.uint = width; //transfer width size information that filter can work
   initiator.write_to_socket(GaussianBlur_FILTER_R_ADDR, mask, data.uc, 4);
   for (y = 0; y < height; ++y)
   {
     for (x = 0; x < width; ++x)
     {
-      for (int filterY = 0; filterY < MASK_Y; filterY++) //
-      {
-        for (int filterX = 0; filterX < MASK_X; filterX++)//
-        {
+      
           red = *(source_bitmap +
                   bytes_per_pixel * (width * (y) + (x)) + 2);
           green = *(source_bitmap +
@@ -162,19 +159,15 @@ void Testbench::do_GaussianBlur()
           // send data by socket
           initiator.write_to_socket(GaussianBlur_FILTER_R_ADDR, mask, data.uc, 4);
           pixels += 3;
-        }//
-      }//
-      initiator.read_from_socket(GaussianBlur_FILTER_RESULT_ADDR, mask, data.uc, 4);
-      *(target_bitmap + bytes_per_pixel * (width * y + x) + 2) = data.uc[0];
-      *(target_bitmap + bytes_per_pixel * (width * y + x) + 1) = data.uc[1];
-      *(target_bitmap + bytes_per_pixel * (width * y + x) + 0) = data.uc[2];
+        
+     
     }
   }
   cout << "pixels back  = " << pixels << endl;
   sc_stop();
 }
 
-/*void Testbench::do_GaussianBlur_out()
+void Testbench::do_GaussianBlur_out()
 {
   wait(5 * CLOCK_PERIOD, SC_NS);
   unsigned char mask[4];
@@ -191,4 +184,3 @@ void Testbench::do_GaussianBlur()
   }
   sc_stop();
 }
-*/
