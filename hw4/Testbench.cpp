@@ -133,7 +133,7 @@ void Testbench::do_GaussianBlur()
   word data;
   unsigned char mask[4];
   data.uint = width; //transfer width size information that filter can work
-  initiator.write_to_socket(GaussianBlur_FILTER_R_ADDR, mask, data.uc, 4);
+  initiator.write_to_socket(GaussianBlur_MM_BASE + GaussianBlur_FILTER_R_ADDR, mask, data.uc, 4);
   for (y = 0; y < height; ++y)
   {
     for (x = 0; x < width; ++x)
