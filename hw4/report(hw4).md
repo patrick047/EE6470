@@ -3,29 +3,32 @@
 student:趙庭慶 number:109061616
 ## Implemation
 ### 3X3 Gaussian Blur Filter(systemC) with TLM 2.0 bus
-I modified the hw3 and lab04 source code to make the new 3X3 Gaussian Blur Filter(TLM2.0).
-There are four parts of this source code
+I modified the hw3 and lab04 source code to make the new 3X3 Gaussian Blur Filter(TLM2.0 bus).
+There are seven parts of this source code
 (1) GaussianBlurFilter.cpp(do convoluction), GaussianBlurFilter.h
 (2) Testbench.cpp, Testbench.h
 (3) main.cpp
 (4) Initiator.cpp, Initiator.h
+(5) MemoryMap.h
+(6) Simplebus.h
+(7) tlm_log.cpp, tlm_log.h
 and using cmake to working this homework.
 cmake: cmake --> Cmakelist.txt --> Makefile
 make: Makefile
 make run: run
 #### structure
-I modified the structure from the sobel filter(lab03).
-![](https://raw.githubusercontent.com/patrick047/EE6470/main/hw3/hw3_2.jpg)
+I modified the structure from the lab04.
+![](https://raw.githubusercontent.com/patrick047/EE6470/main/hw4/hw4_2.jpg)
 
 ## Results 
 ### Original
 ![](https://raw.githubusercontent.com/patrick047/EE6470/main/hw1/Gaussian_Blur/lena.bmp)
 ### After hw3
-![](https://raw.githubusercontent.com/patrick047/EE6470/main/hw3/build/lena_filted.bmp)
+![](https://raw.githubusercontent.com/patrick047/EE6470/main/hw4/build/lena_filted.bmp)
 The simulation time is 2601473.
-![](https://raw.githubusercontent.com/patrick047/EE6470/main/hw3/hw3_1.PNG)
+![](https://raw.githubusercontent.com/patrick047/EE6470/main/hw4/hw4_1.PNG)
 
-## Source Code Introduction
+## Source Code Introduction(new from before)
 #### GaussianBlurFilter mask
 ```
 const double filter[MASK_X][MASK_Y] =
@@ -39,11 +42,15 @@ double factor = 16.0;
 double bias = 0.0;
 
 ```
-#### socket connect to main.cpp
+#### Testbench connect to SimpleBus and Filter
 ```
 Testbench tb("tb");
+  SimpleBus<1, 1> bus("bus"); //lab04
+  bus.set_clock_period(sc_time(CLOCK_PERIOD, SC_NS));  //lab04
   GaussianBlurFilter GaussianBlur_filter("GaussianBlur_filter");
-  tb.initiator.i_skt(GaussianBlur_filter.t_skt);
+  tb.initiator.i_skt(bus.t_skt[0]);
+  bus.setDecode(0, GaussianBlur_MM_BASE, GaussianBlur_MM_BASE + GaussianBlur_MM_SIZE - 1);  //lab04
+  bus.i_skt[0](GaussianBlur_filter.t_skt);  //lab04
 ```
 #### blocking_transpot connect to do_GaussianBlur
 ```
@@ -126,4 +133,23 @@ void GaussianBlurFilter::blocking_transport(tlm::tlm_generic_payload &payload, s
   }
   payload.set_response_status(tlm::TLM_OK_RESPONSE); // Always OK
 }
+```
+#### SimpleBus, manage i_skt, t_skt and MemoryMap
+```
+SC_HAS_PROCESS(SimpleBus);
+  SimpleBus(sc_core::sc_module_name name, double clock_period_in_ps = 1000,
+            bool trace = false, bool masked = true)
+      : sc_core::sc_module(name), MemoryMap(name, NR_OF_INITIATOR_SOCKETS),
+        clock_period(clock_period_in_ps, sc_core::SC_PS), m_trace(trace),
+        m_is_address_masked(masked) {
+    for (unsigned int i = 0; i < NR_OF_TARGET_SOCKETS; ++i) {
+      t_skt[i].register_b_transport(this, &SimpleBus::initiatorBTransport, i);
+      t_skt[i].register_transport_dbg(this, &SimpleBus::transportDebug, i);
+      t_skt[i].register_get_direct_mem_ptr(this, &SimpleBus::getDMIPointer, i);
+    }
+    for (unsigned int i = 0; i < NR_OF_INITIATOR_SOCKETS; ++i) {
+      i_skt[i].register_invalidate_direct_mem_ptr(
+          this, &SimpleBus::invalidateDMIPointers, i);
+    }
+  }
 ```
