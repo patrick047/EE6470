@@ -23,7 +23,7 @@ I modified the structure from the lab04.
 ## Results 
 ### Original
 ![](https://raw.githubusercontent.com/patrick047/EE6470/main/hw1/Gaussian_Blur/lena.bmp)
-### After hw3
+### After hw4
 ![](https://raw.githubusercontent.com/patrick047/EE6470/main/hw4/build/lena_filted.bmp)
 The simulation time is 2601473.
 ![](https://raw.githubusercontent.com/patrick047/EE6470/main/hw4/hw4_1.PNG)
