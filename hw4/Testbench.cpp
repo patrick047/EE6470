@@ -156,7 +156,7 @@ void Testbench::do_GaussianBlur()
           mask[2] = 0xff;
           mask[3] = 0;
           // send data by socket
-          initiator.write_to_socket(GaussianBlur_FILTER_R_ADDR, mask, data.uc, 4);
+          initiator.write_to_socket(GaussianBlur_MM_BASE+GaussianBlur_FILTER_R_ADDR, mask, data.uc, 4);
           pixels += 3;
         
      
@@ -175,7 +175,7 @@ void Testbench::do_GaussianBlur_out()
   {
     for (int x = 0; x != width; x++)
     {
-      initiator.read_from_socket(GaussianBlur_FILTER_RESULT_ADDR, mask, data.uc, 4);
+      initiator.read_from_socket(GaussianBlur_MM_BASE+GaussianBlur_FILTER_RESULT_ADDR, mask, data.uc, 4);
       *(target_bitmap + bytes_per_pixel * (width * y + x) + 2) = data.uc[0];
       *(target_bitmap + bytes_per_pixel * (width * y + x) + 1) = data.uc[1];
       *(target_bitmap + bytes_per_pixel * (width * y + x) + 0) = data.uc[2];
@@ -183,4 +183,5 @@ void Testbench::do_GaussianBlur_out()
   }
   sc_stop();
 }
+
 
