@@ -1,4 +1,4 @@
-# Sobel Edge Detector
+
 
 ## SystemC Simulation
 
