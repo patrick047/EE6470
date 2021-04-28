@@ -14,7 +14,7 @@ System::System( sc_module_name n, string input_bmp, string output_bmp ): sc_modu
     tb.i_b(result_b);
 	GaussianBlurFilter.i_r(source_r);
 	GaussianBlurFilter.i_g(source_g);
-	GaussianBlurFilter.i_g(source_b;
+	GaussianBlurFilter.i_b(source_b);
 	GaussianBlurFilter.o_r(result_r);
 	GaussianBlurFilter.o_g(result_g);
 	GaussianBlurFilter.o_b(result_b);
