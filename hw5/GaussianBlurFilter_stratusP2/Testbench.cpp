@@ -139,7 +139,11 @@ void Testbench::feed_rgb() {
 	total_txn_time = SC_ZERO_TIME;
 
 #ifndef NATIVE_SYSTEMC
-	o_rgb.reset();
+	
+        o_r.reset();
+	o_g.reset();
+	o_b.reset();
+
 #endif
 	o_rst.write(false);
 	wait(5);
