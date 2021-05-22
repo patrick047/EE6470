@@ -49,7 +49,7 @@ student:趙庭慶 number:109061616
 在這次的作業，對 Gaussian Blur Filter 做兩種不同方式 input 形式的模擬。
 1. splitted 為 RBG data 利用 3 個 8-bit 的 p2p channel 進行傳送， 
 2. non splitted mode 為 RBG data 利用 1 個 24-bit 的 p2p channel 進行傳送。
-根據模擬結果得知， splitted mode 在 Area 和 Run time 都比 non splitted mode 來的差，而 DPA 相對於 BASIC 對 Run time 的表現沒有影響，但是 Area 的表現有比較好。
+##### 根據模擬結果得知， splitted mode 在 Area 和 Run time 都比 non splitted mode 來的差，而 DPA 相對於 BASIC 對 Run time 的表現沒有影響，但是 Area 的表現有比較好。
 ### Problem
 在跑 sim_V 的時候，發生了部分datatype 無法進行 HLS ，利用 double 建立的就無法進行 HLS，up 因此改成用uint。
 
