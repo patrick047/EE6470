@@ -1,4 +1,4 @@
-# EE6470 Homework 5
+# EE6470 Homework 6
 ### Cross-compile Gaussian Blur to RISC-V VP platform
 student:趙庭慶 number:109061616
 ## Implemation
