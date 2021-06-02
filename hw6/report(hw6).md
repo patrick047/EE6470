@@ -11,16 +11,9 @@ Go to the PATH: riscv-vp/vp/build and do (1)cmake .. (2)make install, now the pl
 ### Structure
 
 ### Result:
-#### Original
-![](https://github.com/patrick047/EE6470/blob/main/hw5/hw5_data/lena_std_short.bmp)
-#### After
-![](https://github.com/patrick047/EE6470/blob/main/hw5/hw5_data/out.bmp)
-
+![](https://github.com/patrick047/EE6470/blob/main/hw6/hw6.PNG)
 ## Conclusion
-在這次的作業，對 Gaussian Blur Filter 做兩種不同方式 input 形式的模擬。
-1. splitted 為 RBG data 利用 3 個 8-bit 的 p2p channel 進行傳送， 
-2. non splitted mode 為 RBG data 利用 1 個 24-bit 的 p2p channel 進行傳送。
-根據模擬結果得知， splitted mode 在 Area 和 Run time 都比 non splitted mode 來的差，而 DPA 相對於 BASIC 對 Run time 的表現沒有影響，但是 Area 的表現有比較好。
+在這次的作業，我們將systemc 模塊移植到riscv-vp上，對 Gaussian Blur Filter 在riscv上模擬。RISCV提供了一個完整的平台，包含了MEMORY,I/O,CPU，能夠輕鬆的在SOFTWARE跟HARDWARE上做SIMULATION。
 
 
 
