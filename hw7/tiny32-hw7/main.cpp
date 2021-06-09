@@ -22,7 +22,8 @@ uint32_t lock;
 
 // read array
 unsigned int ReadfromByteArray(unsigned char* array, unsigned int offset) {
-	unsigned int output = (array[offset] << 0) | (array[offset + 1] << 8) | (array[offset + 2] << 16) | (array[offset + 3] << 24);
+	unsigned int output =
+	    (array[offset] << 0) | (array[offset + 1] << 8) | (array[offset + 2] << 16) | (array[offset + 3] << 24);
 	return output;
 }
 
@@ -97,7 +98,6 @@ int main(unsigned hart_id) {
 	if (hart_id == 0)
 		sem_init(&lock, 1);
 
-
 #include "lena_std_short.h"  //included here to avoid compiler issue of not initializing global arrays
 	unsigned char* source_array = lena_std_short_bmp;
 
@@ -139,34 +139,33 @@ int main(unsigned hart_id) {
 				}
 			}
 			read_data_from_ACC(GAUSSIANBLURFILTER_READ_ADDR[hart_id], buffer, 4, hart_id);
-      /*
-			unsigned char R = output_bmp[bytes_per_pixel * (i * width + j) + 2];
+
+			/*unsigned char R = output_bmp[bytes_per_pixel * (i * width + j) + 2];
 			unsigned char G = output_bmp[bytes_per_pixel * (i * width + j) + 1];
 			unsigned char B = output_bmp[bytes_per_pixel * (i * width + j) + 0];
 			if (hart_id == 0)
-				continue;
+			    continue;
 			if (R != buffer[0]) {
-				printf("[ERROR] R: i:%d, j:%d, result:%d, correct:%d\n", i, j, buffer[0], R);
-				pass = false;
+			    printf("[ERROR] R: i:%d, j:%d, result:%d, correct:%d\n", i, j, buffer[0], R);
+			    pass = false;
 			} else {
-				// printf("[CORRECT] R: i:%d, j:%d, result:%d, correct:%d\n", i, j, buffer[0], R);
+			    // printf("[CORRECT] R: i:%d, j:%d, result:%d, correct:%d\n", i, j, buffer[0], R);
 			}
 
 			if (G != buffer[1]) {
-				printf("[ERROR] G: i:%d, j:%d, result:%d, correct:%d\n", i, j, buffer[1], G);
-				pass = false;
+			    printf("[ERROR] G: i:%d, j:%d, result:%d, correct:%d\n", i, j, buffer[1], G);
+			    pass = false;
 			} else {
-				// printf("[CORRECT] G: i:%d, j:%d, result:%d, correct:%d\n", i, j, buffer[1], G);
+			    // printf("[CORRECT] G: i:%d, j:%d, result:%d, correct:%d\n", i, j, buffer[1], G);
 			}
 
 			if (B != buffer[2]) {
-				printf("[ERROR] B: i:%d, j:%d, result:%d, correct:%d\n", i, j, buffer[2], B);
-				pass = false;
+			    printf("[ERROR] B: i:%d, j:%d, result:%d, correct:%d\n", i, j, buffer[2], B);
+			    pass = false;
 			} else {
-				// printf("[CORRECT] B: i:%d, j:%d, result:%d, correct:%d\n", i, j, buffer[2], B);
-      */
-			}
+			    // printf("[CORRECT] B: i:%d, j:%d, result:%d, correct:%d\n", i, j, buffer[2], B);
+			}*/
 		}
-		printf("Current: %d\n", i);
+		// printf("Current: %d\n", i);
 	}
 }
