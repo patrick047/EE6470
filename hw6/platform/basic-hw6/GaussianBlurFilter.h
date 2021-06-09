@@ -85,7 +85,7 @@ GaussianBlurFilter(sc_module_name n):
         case tlm::TLM_READ_COMMAND:
             // cout << "READ" << endl;
             switch (addr) {
-            case FILTER_RESULT_ADDR:
+            case GaussianBlurFilter_RESULT_ADDR:
                 buffer.uc[0] = o_r.read();
                 buffer.uc[1] = o_g.read();
                 buffer.uc[2] = o_b.read();
@@ -104,7 +104,7 @@ GaussianBlurFilter(sc_module_name n):
         case tlm::TLM_WRITE_COMMAND:
             // cout << "WRITE" << endl;
             switch (addr) {
-            case FILTER_R_ADDR:
+            case GaussianBlurFilter_R_ADDR:
                 i_r.write(data_ptr[0]);
                 i_g.write(data_ptr[1]);
                 i_b.write(data_ptr[2]);
