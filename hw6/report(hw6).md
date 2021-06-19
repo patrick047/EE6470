@@ -9,7 +9,7 @@ I build a new folder(basic-hw6) in platform folder and modified (1)GaussianBlurF
 #### step 2:
 Go to the PATH: riscv-vp/vp/build and do (1)cmake .. (2)make install, now the platform have been build.
 ### Structure
-
+![](https://github.com/patrick047/EE6470/blob/main/hw6/filestructure.PNG)
 ### Result:
 ![](https://github.com/patrick047/EE6470/blob/main/hw6/hw6.PNG)
 ## Conclusion
