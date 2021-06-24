@@ -19,6 +19,7 @@ static volatile uint32_t * const DMA_OP_ADDR   = (uint32_t * const)0x7000000C;
 static volatile uint32_t * const DMA_STAT_ADDR = (uint32_t * const)0x70000010;
 static const uint32_t DMA_OP_MEMCPY = 1;
 static const uint32_t DMA_OP_NOP = 0;
+
 //TODO fixed DMA access
 bool _is_using_dma = false;
 //Total number of cores
@@ -34,6 +35,7 @@ uint32_t lock;
 uint32_t print_sem[PROCESSORS]; 
 
 
+// semaphore
 int sem_init (uint32_t *__sem, uint32_t count) __THROW{
   *__sem=count;
   return 0;
@@ -69,6 +71,7 @@ L%=:\n\t\
   return 0;
 }
 
+// barrier
 int barrier(uint32_t *__sem, uint32_t *__lock, uint32_t *counter, uint32_t thread_count) {
 	sem_wait(__lock);
 	if (*counter == thread_count - 1) { //all finished
@@ -83,6 +86,7 @@ int barrier(uint32_t *__sem, uint32_t *__lock, uint32_t *counter, uint32_t threa
 	return 0;
 }
 
+// DMA
 void write_data_to_ACC(char* ADDR, unsigned char* buffer, int len, int hart_id){
     if(_is_using_dma){  
         // Using DMA 
@@ -113,11 +117,13 @@ void read_data_from_ACC(char* ADDR, unsigned char* buffer, int len, int hart_id)
     }
 }
 
+// read array
 unsigned int ReadfromByteArray(unsigned char* array, unsigned int offset) {
 	unsigned int output = (array[offset] << 0) | (array[offset + 1] << 8) | (array[offset + 2] << 16) | (array[offset + 3] << 24);
 	return output;
 }
 
+// main
 int main(unsigned hart_id) {
 
 	if (hart_id == 0) {
