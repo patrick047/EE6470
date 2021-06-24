@@ -4,7 +4,7 @@
 ### OPERATION
 #### step 1(build the platform): cd riscv-vp/vp/build
 ```
-cmake ..
+ cmake ..
 ```
 ```
  make install
