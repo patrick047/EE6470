@@ -1,7 +1,7 @@
 # NTHU EE 
 ## CLASS: EE6470 Implement of Many-Core System 
 ## STUDENT: TING-CHING CHAO
-### Homework Part
+### Homework Part:
 #### HW1 (Gaussian Blur)
 #### HW2 (Gaussian Blur with FIFO channels and row buffers)
 #### HW3 (Gaussian Blur with TLM-2.0 interfaces)
